@@ -59,8 +59,9 @@ def parse(snippet, phrase):
     return results
 
 # keep going until quit or CTRL-D
+exit_check = True
 try:
-    while True:
+    while exit_check:
         snippets = list(QUESTIONS)
         random.shuffle(snippets)
 
@@ -72,8 +73,18 @@ try:
 
             print(question)
 
-            input("> ")
+            user_answer = input("> ")
+
+            if user_answer == answer:
+                print("Correct answer!")
+            else:
+                print("Wrong answer")
+
             print("ANSWER: {}\n\n".format(answer))
+            print("Click ENTER to continue or type 'quit'")
+            if input("> ") == 'quit':
+                exit_check = False
+                break
 
 
 except EOFError:

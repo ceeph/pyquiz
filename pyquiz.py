@@ -27,14 +27,16 @@ with open(WORD_FILE) as open_file:
     for line in open_file:
         WORDS.append(line.strip())
 
+
 def parse(snippet, phrase):
-    class_names = [w.capitalize() for w in random.sample(WORDS, snippet.count("%%%"))]
+    class_names = [w.capitalize()
+                   for w in random.sample(WORDS, snippet.count("%%%"))]
     other_names = random.sample(WORDS, snippet.count("***"))
     results = []
     param_names = []
 
     for i in range(0, snippet.count("@@@")):
-        param_count = random.randint(1,3)
+        param_count = random.randint(1, 3)
         param_names.append(', '.join(random.sample(WORDS, param_count)))
 
     for sentence in snippet, phrase:
@@ -68,10 +70,11 @@ try:
             if ANSWER_FIRST:
                 question, answer = answer, question
 
-            print (question)
+            print(question)
 
             input("> ")
             print("ANSWER: {}\n\n".format(answer))
-except EOFError:
-    print ("\nBye!")
 
+
+except EOFError:
+    print("\nBye!")

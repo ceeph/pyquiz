@@ -35,7 +35,7 @@ def parse(snippet, phrase):
     results = []
     param_names = []
 
-    for i in range(0, snippet.count("@@@")):
+    for _ in range(0, snippet.count("@@@")):
         param_count = random.randint(1, 3)
         param_names.append(', '.join(random.sample(WORDS, param_count)))
 
@@ -60,6 +60,7 @@ def parse(snippet, phrase):
 
 # keep going until quit or CTRL-D
 exit_check = True
+
 try:
     while exit_check:
         snippets = list(QUESTIONS)
